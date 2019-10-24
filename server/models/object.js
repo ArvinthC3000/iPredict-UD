@@ -22,6 +22,6 @@ const newItem = new mongoose.Schema({
     }
 })
 
-const User =  mongoose.model('UserObj', newItem)
+const Item =  mongoose.model('itemObj', newItem)
 
 module.exports = UserObject 
