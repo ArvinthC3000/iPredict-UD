@@ -5,46 +5,45 @@ let amount = [];
 addItem = () => {
     let item = document.getElementById("item").value;
     let qnty = document.getElementById("qnty").value;
-    let bill = document.createElement("table");
-    bill.setAttribute("id", "bill");
-    document.body.appendChild(bill);
 
         if (startFlag == false){
-            let tableRow = document.createElement("tr");
-            tableRow.setAttribute("id", "tableRow");
-            let th = document.createElement("th");
-            th.setAttribute("id", "yy")
-            let td = document.createElement("td");
-            td.setAttribute("id", "xx")
+            let tHead = document.createElement("thead");
+            let tR = document.createElement("tr");
+            tHead.appendChild(tR);
 
-            let head = ["S.No", "Items", "Quantity", "Unit Price", "Amount"];
-
-            for(i=0; i<4; i++){
+            for(i=0; i<5; i++){
+                let head = ["S.No", "Items", "Quantity", "Unit Price", "Amount"];
+                let tH = document.createElement("th");
                 let content = document.createTextNode(head[i]);
-                console.log(head[i]);
-                th.appendChild(content);
+                tH.appendChild(content);
+                tR.appendChild(tH);
             }
-            tableRow.appendChild(th);
-            bill.appendChild(tableRow);
+            let bill = document.getElementById("bill");
+            bill.appendChild(tR);
             startFlag += 1;
         }
+
         else{
             void(0);
         }
-    
-        let tableRow = document.createElement("tr");
-        tableRow.setAttribute("id", "tableRow");
-        let td = document.createElement("td");
-        td.setAttribute("id", "xx")
 
-        let head = [startFlag, item, qnty, 100, 200];
+    let tBody = document.createElement("tbody");
+    let tR = document.createElement("tr");
+    tBody.appendChild(tR);
+    let unitPrice = Math.floor(Math.random()*100);
+    let amnt = unitPrice*qnty;
+    amount.push(amnt);
 
-        for(i=0; i<4; i++){
-            let content = document.createTextNode(head[i]);
-            td.appendChild(content);
+        for(i=0; i<5; i++){
+            let data = [startFlag, item, qnty, unitPrice, amnt];
+            let tD = document.createElement("td");
+            let content = document.createTextNode(data[i]);
+            tD.appendChild(content);
+            tR.appendChild(tD);
         }
-        tableRow.appendChild(td);
-        bill.appendChild(tableRow);
+
+        let bill = document.getElementById("bill");
+        bill.appendChild(tR);
         startFlag += 1;
 }
 
