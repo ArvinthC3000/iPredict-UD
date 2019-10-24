@@ -68,6 +68,8 @@ addNewItem = (item, qnty) =>{
             if(i===2){
                 content = document.createElement("input");
                 content.setAttribute("class", "tableQnty");
+                console.log(startFlag);
+                content.setAttribute("id", `tableQnty${startFlag}`);
                 content.setAttribute("type", "number");
                 content.setAttribute("value", qnty);              
             }
@@ -97,18 +99,19 @@ addTotal = () =>{
 
     if(totalFlag == false){
         for(i=0; i<5; i++){
-            createTotal(bill, tRTot);
+            createTotal(bill, tBody, tRTot);
         }
     }
 
     else{
         for(i=0; i<5; i++){
-            updateTotal(bill, tRTot);
+            eraseTotal();
+            createTotal(bill, tBody, tRTot);
         }
     }
 }
 
-createTotal = (table, totalRow) =>{
+createTotal = (table, body, totalRow) =>{
     let head = ["", "", "", "Total", total];
     let tH = document.createElement("th");
     tH.setAttribute("id", "totalContents");
@@ -116,17 +119,21 @@ createTotal = (table, totalRow) =>{
     tH.appendChild(content);
     totalRow.appendChild(tH);
     totalFlag += 1;
-    table.appendChild(tBody);
+    table.appendChild(body);
 }
 
-updateTotal = (table, totalRow) =>{
-    let child = document.getElementById("totalContents");
-    child.remove();
+eraseTotal = () =>{
+    let element = document.getElementById("totalContents");
+    element.remove();
+}
+
+
+updateTotal = (table, body, totalRow) =>{
     let head = ["", "", "", "Total", total];
     let tH = document.createElement("th");
     tH.setAttribute("id", "totalContents")
     let content = document.createTextNode(head[i]);
     tH.appendChild(content);
     totalRow.appendChild(tH);
-    table.appendChild(tBody);
+    table.appendChild(body);
 }
