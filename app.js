@@ -27,10 +27,6 @@ addItem = () => {
             startFlag += 1;
         }
 
-        else{
-            void(0);
-        }
-
     let tBody = document.createElement("tbody");
     let tR = document.createElement("tr");
     tBody.appendChild(tR);
