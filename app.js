@@ -45,6 +45,19 @@ addItem = () => {
         let bill = document.getElementById("bill");
         bill.appendChild(tR);
         startFlag += 1;
+
+        let tHead = document.createElement("thead");
+        let tRTot = document.createElement("tr");
+        tHead.appendChild(tRTot);
+
+            for(i=0; i<5; i++){
+                let head = ["", "", "", "Total", "Amount"];
+                let tH = document.createElement("th");
+                let content = document.createTextNode(head[i]);
+                tH.appendChild(content);
+                tRTot.appendChild(tH);
+            }
+        bill.appendChild(tRTot);
 }
 
 document.getElementById("submit").addEventListener("click", addItem);
