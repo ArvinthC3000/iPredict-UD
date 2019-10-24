@@ -5,67 +5,20 @@ let amount = [];
 let items = [];
 let total = 0;
 
-createTableHeader = (tableHeader, Flag) => {
-    if (Flag == false){
-        let tHead = document.createElement("thead");
-        let tR = document.createElement("tr");
-        tHead.appendChild(tR);
 
-        for(i=0; i<5; i++){
-            let head = ["S.No", "Items", "Quantity", "Unit Price", "Amount"];
-            let tH = document.createElement("th");
-            let content = document.createTextNode(tableHeader[i]);
-            tH.appendChild(content);
-            tR.appendChild(tH);
-        }
-        let bill = document.getElementById("bill");
-        bill.appendChild(tR);
-        startFlag += 1;
-    }
-}
+
+
 
 addItem = () => {
     let item = document.getElementById("item").value;
     let qnty = document.getElementById("qnty").value;
-    let header = ["S.No", "Items", "Quantity", "Unit Price", "Amount"];
     items.push(item);
 
-    createTableHeader(header, startFlag);
+    createTableHeader(startFlag);
 
-    let tBody = document.createElement("tbody");
-    let tR = document.createElement("tr");
-    tBody.appendChild(tR);
-    let unitPrice = Math.floor(Math.random()*100);
-    let amnt = unitPrice*qnty;
-    amount.push(amnt);
-    total += amnt;
-
-        for(i=0; i<5; i++){
-            let data = [startFlag, item, qnty, unitPrice, amnt];
-            let tD = document.createElement("td");
-            tD.setAttribute("class", "tableValues");
-            let content = 0;
-            if(i===2){
-                content = document.createElement("input");
-                content.setAttribute("class", "tableQnty");
-                content.setAttribute("type", "number");
-                content.setAttribute("value", qnty);              
-            }
-            else{
-                content = document.createTextNode(data[i]);
-                if(i>2){
-                    tD.setAttribute("class", "moneyValues");
-                }
-            }
+    addNewItem(item, qnty);
             
-            tD.appendChild(content);
-            tR.appendChild(tD);
-        }
-
-        let bill = document.getElementById("bill");
-        bill.appendChild(tR);
-        startFlag += 1;
-
+        let tBody = document.createElement("tbody");
         let tRTot = document.createElement("tr");
         tRTot.setAttribute("id", "totalRow");
         tBody.appendChild(tRTot);
@@ -103,3 +56,62 @@ addItem = () => {
 
 document.getElementById("submit").addEventListener("click", addItem);
 
+createTableHeader = (Flag) =>{
+    if (Flag == false){
+        
+        let tHead = document.createElement("thead");
+        let tR = document.createElement("tr");
+        tHead.appendChild(tR);
+
+        for(i=0; i<5; i++){
+            let tableHeader = ["S.No", "Items", "Quantity", "Unit Price", "Amount"];
+            let tH = document.createElement("th");
+            let content = document.createTextNode(tableHeader[i]);
+            tH.appendChild(content);
+            tR.appendChild(tH);
+        }
+        let bill = document.getElementById("bill");
+        bill.appendChild(tR);
+        startFlag += 1;
+    }
+}
+
+addNewItem = (item, qnty) =>{        
+    let tBody = document.createElement("tbody");
+    let tR = document.createElement("tr");
+    tBody.appendChild(tR);
+
+    //To be deleted in future
+    let unitPrice = Math.floor(Math.random()*100);
+    let amnt = unitPrice*qnty;
+    //To be deleted in future
+
+    amount.push(amnt);
+    total += amnt;
+
+        for(i=0; i<5; i++){
+            let data = [startFlag, item, qnty, unitPrice, amnt];
+            let tD = document.createElement("td");
+            tD.setAttribute("class", "tableValues");
+            let content = 0;
+            if(i===2){
+                content = document.createElement("input");
+                content.setAttribute("class", "tableQnty");
+                content.setAttribute("type", "number");
+                content.setAttribute("value", qnty);              
+            }
+            else{
+                content = document.createTextNode(data[i]);
+                if(i>2){
+                    tD.setAttribute("class", "moneyValues");
+                }
+            }
+            
+            tD.appendChild(content);
+            tR.appendChild(tD);
+        }
+
+    let bill = document.getElementById("bill");
+    bill.appendChild(tR);
+    startFlag += 1;
+}
