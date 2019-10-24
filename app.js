@@ -53,12 +53,13 @@ addItem = () => {
         let tRTot = document.createElement("tr");
         tRTot.setAttribute("id", "totalRow");
         tHead.appendChild(tRTot);
+        console.log(totalFlag);
 
         if(totalFlag == false){
             for(i=0; i<5; i++){
                 let head = ["", "", "", "Total", total];
                 let tH = document.createElement("th");
-                tH.setAttribute("id", "totalContents")
+                tH.setAttribute("id", "totalContents");
                 let content = document.createTextNode(head[i]);
                 tH.appendChild(content);
                 tRTot.appendChild(tH);
@@ -80,7 +81,8 @@ addItem = () => {
                 tRTot.appendChild(tH);
             }
         }
+
+        bill.appendChild(tHead);
 }
 
 document.getElementById("submit").addEventListener("click", addItem);
-// Comments
