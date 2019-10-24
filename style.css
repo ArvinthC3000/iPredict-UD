@@ -36,3 +36,17 @@
     color: #ffffff;
 }
 
+.tableQnty{
+    height: 5%;
+    width: 50%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.tableValues{
+    text-align: center;
+}
+
+.moneyValues, #totalRow{
+    text-align: right;
+}

@@ -2,11 +2,13 @@ let startFlag = 0;
 let totalFlag = 0;
 let particulars = [];
 let amount = [];
+let items = [];
 let total = 0;
 
 addItem = () => {
     let item = document.getElementById("item").value;
     let qnty = document.getElementById("qnty").value;
+    items.push(item);
 
         if (startFlag == false){
             let tHead = document.createElement("thead");
@@ -40,7 +42,21 @@ addItem = () => {
         for(i=0; i<5; i++){
             let data = [startFlag, item, qnty, unitPrice, amnt];
             let tD = document.createElement("td");
-            let content = document.createTextNode(data[i]);
+            tD.setAttribute("class", "tableValues");
+            let content = 0;
+            if(i===2){
+                content = document.createElement("input");
+                content.setAttribute("class", "tableQnty");
+                content.setAttribute("type", "number");
+                content.setAttribute("value", qnty);              
+            }
+            else{
+                content = document.createTextNode(data[i]);
+                if(i>2){
+                    tD.setAttribute("class", "moneyValues");
+                }
+            }
+            
             tD.appendChild(content);
             tR.appendChild(tD);
         }
@@ -69,9 +85,7 @@ addItem = () => {
 
         else{
             for(i=0; i<5; i++){
-                let parent = document.getElementById("totalRow");
                 let child = document.getElementById("totalContents");
-                console.log(child);
                 child.remove();
                 let head = ["", "", "", "Total", total];
                 let tH = document.createElement("th");
