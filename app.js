@@ -2,6 +2,7 @@ let startFlag = 0;
 let totalFlag = 0;
 let particulars = [];
 let amount = [];
+let total = 0;
 
 addItem = () => {
     let item = document.getElementById("item").value;
@@ -34,6 +35,7 @@ addItem = () => {
     let unitPrice = Math.floor(Math.random()*100);
     let amnt = unitPrice*qnty;
     amount.push(amnt);
+    total += amnt;
 
         for(i=0; i<5; i++){
             let data = [startFlag, item, qnty, unitPrice, amnt];
@@ -54,7 +56,7 @@ addItem = () => {
 
         if(totalFlag == false){
             for(i=0; i<5; i++){
-                let head = ["", "", "", "Total", "Amount"];
+                let head = ["", "", "", "Total", total];
                 let tH = document.createElement("th");
                 tH.setAttribute("id", "totalContents")
                 let content = document.createTextNode(head[i]);
@@ -70,7 +72,7 @@ addItem = () => {
                 let child = document.getElementById("totalContents");
                 console.log(child);
                 child.remove();
-                let head = ["", "", "", "Total", "Amount"];
+                let head = ["", "", "", "Total", total];
                 let tH = document.createElement("th");
                 tH.setAttribute("id", "totalContents")
                 let content = document.createTextNode(head[i]);
@@ -78,8 +80,6 @@ addItem = () => {
                 tRTot.appendChild(tH);
             }
         }
-
-        bill.appendChild(tRTot);
 }
 
 document.getElementById("submit").addEventListener("click", addItem);
