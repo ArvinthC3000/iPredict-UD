@@ -1,6 +1,5 @@
 let startFlag = 0;
 let totalFlag = 0;
-let particulars = [];
 let amount = [];
 let items = [];
 let total = 0;
@@ -10,54 +9,27 @@ let total = 0;
 
 
 addItem = () => {
+        
     let item = document.getElementById("item").value;
     let qnty = document.getElementById("qnty").value;
     items.push(item);
 
-    createTableHeader(startFlag);
+    createTableHeader();
 
-    addNewItem(item, qnty);
-            
-        let tBody = document.createElement("tbody");
-        let tRTot = document.createElement("tr");
-        tRTot.setAttribute("id", "totalRow");
-        tBody.appendChild(tRTot);
-        console.log(totalFlag);
+    addNewItem(item, qnty);        
 
-        if(totalFlag == false){
-            for(i=0; i<5; i++){
-                let head = ["", "", "", "Total", total];
-                let tH = document.createElement("th");
-                tH.setAttribute("id", "totalContents");
-                let content = document.createTextNode(head[i]);
-                tH.appendChild(content);
-                tRTot.appendChild(tH);
-                totalFlag += 1;
-                bill.appendChild(tBody);
-            }
-        }
-
-        else{
-            for(i=0; i<5; i++){
-                let child = document.getElementById("totalContents");
-                child.remove();
-                let head = ["", "", "", "Total", total];
-                let tH = document.createElement("th");
-                tH.setAttribute("id", "totalContents")
-                let content = document.createTextNode(head[i]);
-                tH.appendChild(content);
-                tRTot.appendChild(tH);
-                bill.appendChild(tBody);
-            }
-        }
+    addTotal();
+        
 
         
 }
 
 document.getElementById("submit").addEventListener("click", addItem);
 
-createTableHeader = (Flag) =>{
-    if (Flag == false){
+
+
+createTableHeader = () =>{
+    if (startFlag == false){
         
         let tHead = document.createElement("thead");
         let tR = document.createElement("tr");
@@ -70,7 +42,6 @@ createTableHeader = (Flag) =>{
             tH.appendChild(content);
             tR.appendChild(tH);
         }
-        let bill = document.getElementById("bill");
         bill.appendChild(tR);
         startFlag += 1;
     }
@@ -111,7 +82,41 @@ addNewItem = (item, qnty) =>{
             tR.appendChild(tD);
         }
 
-    let bill = document.getElementById("bill");
     bill.appendChild(tR);
     startFlag += 1;
+}
+
+addTotal = () =>{
+
+    let tBody = document.createElement("tbody");
+    let tRTot = document.createElement("tr");
+    tRTot.setAttribute("id", "totalRow");
+    tBody.appendChild(tRTot);
+
+    if(totalFlag == false){
+        for(i=0; i<5; i++){
+            let head = ["", "", "", "Total", total];
+            let tH = document.createElement("th");
+            tH.setAttribute("id", "totalContents");
+            let content = document.createTextNode(head[i]);
+            tH.appendChild(content);
+            tRTot.appendChild(tH);
+            totalFlag += 1;
+            bill.appendChild(tBody);
+        }
+    }
+
+    else{
+        for(i=0; i<5; i++){
+            let child = document.getElementById("totalContents");
+            child.remove();
+            let head = ["", "", "", "Total", total];
+            let tH = document.createElement("th");
+            tH.setAttribute("id", "totalContents")
+            let content = document.createTextNode(head[i]);
+            tH.appendChild(content);
+            tRTot.appendChild(tH);
+            bill.appendChild(tBody);
+        }
+    }
 }
