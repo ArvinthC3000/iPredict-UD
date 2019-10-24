@@ -3,6 +3,7 @@ let totalFlag = 0;
 let amount = [];
 let items = [];
 let total = 0;
+let quantity = [];
 
 
 
@@ -24,7 +25,10 @@ addItem = () => {
         
 }
 
-document.getElementById("submit").addEventListener("click", addItem);
+// document.getElementById("submit").addEventListener("click", addItem);
+// for(i=0;i<quantity.length;i++){
+//     quantity[i].addEventListener("change",updateTotal);
+// }
 
 
 
@@ -71,7 +75,10 @@ addNewItem = (item, qnty) =>{
                 console.log(startFlag);
                 content.setAttribute("id", `tableQnty${startFlag}`);
                 content.setAttribute("type", "number");
-                content.setAttribute("value", qnty);              
+                content.setAttribute("value", qnty);
+                
+                let quant = document.getElementById(`tableQnty${startFlag}`)
+                quantity.push(quant);
             }
             else{
                 content = document.createTextNode(data[i]);
@@ -128,12 +135,20 @@ eraseTotal = () =>{
 }
 
 
-updateTotal = (table, body, totalRow) =>{
+updateTotal = () =>{
+    let bill = document.getElementById("bill");
+    let tBody = document.createElement("tbody");
+    let tRTot = document.createElement("tr");
+    tRTot.setAttribute("id", "totalRow");
+    tBody.appendChild(tRTot);
+
+    eraseTotal();
+
     let head = ["", "", "", "Total", total];
     let tH = document.createElement("th");
     tH.setAttribute("id", "totalContents")
     let content = document.createTextNode(head[i]);
     tH.appendChild(content);
-    totalRow.appendChild(tH);
-    table.appendChild(body);
+    tRTot.appendChild(tH);
+    bill.appendChild(tBody);
 }
