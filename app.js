@@ -49,10 +49,9 @@ addItem = () => {
         bill.appendChild(tR);
         startFlag += 1;
 
-        let tHead = document.createElement("thead");
         let tRTot = document.createElement("tr");
         tRTot.setAttribute("id", "totalRow");
-        tHead.appendChild(tRTot);
+        tBody.appendChild(tRTot);
         console.log(totalFlag);
 
         if(totalFlag == false){
@@ -64,6 +63,7 @@ addItem = () => {
                 tH.appendChild(content);
                 tRTot.appendChild(tH);
                 totalFlag += 1;
+                bill.appendChild(tBody);
             }
         }
 
@@ -79,10 +79,11 @@ addItem = () => {
                 let content = document.createTextNode(head[i]);
                 tH.appendChild(content);
                 tRTot.appendChild(tH);
+                bill.appendChild(tBody);
             }
         }
 
-        bill.appendChild(tHead);
+        
 }
 
 document.getElementById("submit").addEventListener("click", addItem);
