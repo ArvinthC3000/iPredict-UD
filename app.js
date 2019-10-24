@@ -5,27 +5,32 @@ let amount = [];
 let items = [];
 let total = 0;
 
+createTableHeader = (tableHeader, Flag) => {
+    if (Flag == false){
+        let tHead = document.createElement("thead");
+        let tR = document.createElement("tr");
+        tHead.appendChild(tR);
+
+        for(i=0; i<5; i++){
+            let head = ["S.No", "Items", "Quantity", "Unit Price", "Amount"];
+            let tH = document.createElement("th");
+            let content = document.createTextNode(tableHeader[i]);
+            tH.appendChild(content);
+            tR.appendChild(tH);
+        }
+        let bill = document.getElementById("bill");
+        bill.appendChild(tR);
+        startFlag += 1;
+    }
+}
+
 addItem = () => {
     let item = document.getElementById("item").value;
     let qnty = document.getElementById("qnty").value;
+    let header = ["S.No", "Items", "Quantity", "Unit Price", "Amount"];
     items.push(item);
 
-        if (startFlag == false){
-            let tHead = document.createElement("thead");
-            let tR = document.createElement("tr");
-            tHead.appendChild(tR);
-
-            for(i=0; i<5; i++){
-                let head = ["S.No", "Items", "Quantity", "Unit Price", "Amount"];
-                let tH = document.createElement("th");
-                let content = document.createTextNode(head[i]);
-                tH.appendChild(content);
-                tR.appendChild(tH);
-            }
-            let bill = document.getElementById("bill");
-            bill.appendChild(tR);
-            startFlag += 1;
-        }
+    createTableHeader(header, startFlag);
 
     let tBody = document.createElement("tbody");
     let tR = document.createElement("tr");
@@ -97,3 +102,4 @@ addItem = () => {
 }
 
 document.getElementById("submit").addEventListener("click", addItem);
+
