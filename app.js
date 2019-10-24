@@ -1,4 +1,5 @@
 let startFlag = 0;
+let totalFlag = 0;
 let particulars = [];
 let amount = [];
 
@@ -48,15 +49,36 @@ addItem = () => {
 
         let tHead = document.createElement("thead");
         let tRTot = document.createElement("tr");
+        tRTot.setAttribute("id", "totalRow");
         tHead.appendChild(tRTot);
 
+        if(totalFlag == false){
             for(i=0; i<5; i++){
                 let head = ["", "", "", "Total", "Amount"];
                 let tH = document.createElement("th");
+                tH.setAttribute("id", "totalContents")
+                let content = document.createTextNode(head[i]);
+                tH.appendChild(content);
+                tRTot.appendChild(tH);
+                totalFlag += 1;
+            }
+        }
+
+        else{
+            for(i=0; i<5; i++){
+                let parent = document.getElementById("totalRow");
+                let child = document.getElementById("totalContents");
+                console.log(child);
+                child.remove();
+                let head = ["", "", "", "Total", "Amount"];
+                let tH = document.createElement("th");
+                tH.setAttribute("id", "totalContents")
                 let content = document.createTextNode(head[i]);
                 tH.appendChild(content);
                 tRTot.appendChild(tH);
             }
+        }
+
         bill.appendChild(tRTot);
 }
 
