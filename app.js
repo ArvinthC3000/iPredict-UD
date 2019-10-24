@@ -86,8 +86,10 @@ addNewItem = (item, qnty) =>{
     startFlag += 1;
 }
 
-addTotal = () =>{
 
+
+addTotal = () =>{
+    let bill = document.getElementById("bill");
     let tBody = document.createElement("tbody");
     let tRTot = document.createElement("tr");
     tRTot.setAttribute("id", "totalRow");
@@ -95,28 +97,36 @@ addTotal = () =>{
 
     if(totalFlag == false){
         for(i=0; i<5; i++){
-            let head = ["", "", "", "Total", total];
-            let tH = document.createElement("th");
-            tH.setAttribute("id", "totalContents");
-            let content = document.createTextNode(head[i]);
-            tH.appendChild(content);
-            tRTot.appendChild(tH);
-            totalFlag += 1;
-            bill.appendChild(tBody);
+            createTotal(bill, tRTot);
         }
     }
 
     else{
         for(i=0; i<5; i++){
-            let child = document.getElementById("totalContents");
-            child.remove();
-            let head = ["", "", "", "Total", total];
-            let tH = document.createElement("th");
-            tH.setAttribute("id", "totalContents")
-            let content = document.createTextNode(head[i]);
-            tH.appendChild(content);
-            tRTot.appendChild(tH);
-            bill.appendChild(tBody);
+            updateTotal(bill, tRTot);
         }
     }
+}
+
+createTotal = (table, totalRow) =>{
+    let head = ["", "", "", "Total", total];
+    let tH = document.createElement("th");
+    tH.setAttribute("id", "totalContents");
+    let content = document.createTextNode(head[i]);
+    tH.appendChild(content);
+    totalRow.appendChild(tH);
+    totalFlag += 1;
+    table.appendChild(tBody);
+}
+
+updateTotal = (table, totalRow) =>{
+    let child = document.getElementById("totalContents");
+    child.remove();
+    let head = ["", "", "", "Total", total];
+    let tH = document.createElement("th");
+    tH.setAttribute("id", "totalContents")
+    let content = document.createTextNode(head[i]);
+    tH.appendChild(content);
+    totalRow.appendChild(tH);
+    table.appendChild(tBody);
 }
