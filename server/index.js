@@ -19,3 +19,6 @@ mongoose.connect(db, { useNewUrlParser:true, useUnifiedTopology: true })
 app.use(express.urlencoded({ extended:true }))
 
 app.listen(PORT, console.log('Server is listening at port '+PORT))
+
+// Routes
+
