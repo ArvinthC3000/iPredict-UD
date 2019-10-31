@@ -3,76 +3,30 @@ const router = express.Router();
 const bcrypt =  require('bcryptjs')
 
 // User model
-const User = require('../models/User')
+const User = require('../../models/user')
 
-// Register handler
-router.post('/register',(req,res)=> {
-    const{ name, email, password, password2 } = req.body
-    let errors = [];
+// Insert handler
 
-    // Check required field
-    if(!name || !email || !password || !password2){
-        errors.push({ msg: 'Please fill in all fields'})
-    }
-
-    // Check password match
-    if(password!== password2){
-        errors.push({ msg: 'Passwords do not match'})
-    }
-
-    // Check pass length
-    if(password2.length < 6){
-        errors.push({msg: 'Password should be atleast 6 characters'})
-    }
-
-    if(errors.length >0){
-        res.render('register',{
-            errors,
-            name,
-            email,
-            password,
-            password2
-        })
-    } else {
-        // Validation passed
-        User.findOne({ email: email})
-        .then(user => {
-            if(user){
-                // User exsists
-                errors.push({ msg: 'Email is already registered'})
-                res.render('register',{
-                    errors,
-                    name,
-                    email,
-                    password,
-                    password2
-                })
-            } else {
-                const newUser = new User({
-                    name,
-                    email,
-                    password
-                })
-
-                // Hash password
-                bcrypt.genSalt(10, (err, salt)=>
-                    bcrypt.hash(newUser.password, salt, (err, hash)=>{
-                        if(err) throw err;
-                        // Set password to hashed
-                        newUser.password = hash 
-                        // Save new user to db
-                        newUser.save()
-                        .then(user =>{
-                            res.redirect('/login')
-                        })
-                        .catch(err => console.log(err))
-                    }))
-
-                // Save new user to database
-                res.send('hello')
-            }
-        })
-    }
+router.post('/add',(req,res)=>{
+    const {itemName, category, qty, rate, itemID} = req.body
+    User.findOne({itemID: itemID})
+    .then(item => {
+        if(item){
+            console.log("Item with same itemID already exsists")
+        } else {
+            const newUser = new User({
+                itemName,
+                category,
+                qty,
+                rate,
+                itemID
+            })
+            newUser.save()
+            .then(data =>console.log('Successfully included'))
+            .catch(err => console.log(err))
+        }
+    })
 })
+
 
 module.exports = router; 
