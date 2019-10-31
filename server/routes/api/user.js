@@ -12,7 +12,7 @@ router.post('/add',(req,res)=>{
     User.findOne({itemID: itemID})
     .then(item => {
         if(item){
-            console.log("Item with same itemID already exsists")
+            console.log("Item with same itemID already exists")
         } else {
             const newUser = new User({
                 itemName,
