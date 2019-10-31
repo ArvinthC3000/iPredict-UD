@@ -1,8 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
-
+const bodyparser = require('body-parser')
 const app =  express();
-const PORT = 3001
+const cors = require('cors')
+const PORT = 5099;
 
 // DB config
 
@@ -16,12 +17,17 @@ mongoose.connect(db, { useNewUrlParser:true, useUnifiedTopology: true })
 
 // Bodyparser 
 
-app.use(express.urlencoded({ extended:true }))
+app.use(express.urlencoded({ extended:false }))
+app.use(bodyparser.json())
+app.use(cors())
+
+// app.use('/', console.log("welcome"))
+app.use('/api/user',require('./routes/api/user'))
+// app.use('/api/datacenter',require('./routes/api/datacenter'))
+
 
 app.listen(PORT, console.log('Server is listening at port '+PORT))
 
 // Routes
 
-app.use('/',require('./routes/index'))
-app.use('/dashboard',require('./routes/user'))
 
