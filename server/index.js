@@ -28,6 +28,9 @@ app.use('/api/user',require('./routes/api/user'))
 
 app.listen(PORT, console.log('Server is listening at port '+PORT))
 
-// Routes
+// const value = db.collection.count()
+// console.log(value)
 
+let coll = db.userobjs;
 
+coll.find({itemName:Milk})
