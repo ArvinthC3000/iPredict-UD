@@ -1,4 +1,67 @@
+*{
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
 table, td {
     border: 1px solid black;
     padding: 15px;
-  }
+}
+
+.dashboard{
+  background-color: #B2E8F2;
+}
+
+.header{
+  display: flex;
+  flex-direction: column;
+  color: #EB6864;
+  height: 12vh ;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  border: 1px solid #01CBDC;
+}
+
+.header h1{
+  color: #000
+}
+
+
+.inline{
+  height: 88vh;
+  display: flex;
+}
+
+.navBar{
+  /* position: relative; */
+  display: flex;
+  width: 20%;
+  justify-content: center;
+  float: left;
+  border: 1px solid #01CBDC;
+}
+
+.dashBody{
+  width: 80%;
+  border: 1px solid #01CBDC;
+}
+
+#profile{
+  display: flex;
+  justify-content: center;
+}
+
+#profile_name{
+  /* align-content: center;
+  align-self: center; */
+  justify-content: center;
+}
+
+.hr{
+  width: 1px;
+  background:  black;
+  height: 80vh;
+  display: inline-block;
+}
