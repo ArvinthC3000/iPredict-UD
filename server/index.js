@@ -31,6 +31,6 @@ app.listen(PORT, console.log('Server is listening at port '+PORT))
 // const value = db.collection.count()
 // console.log(value)
 
-let coll = db.userobjs;
+// let coll = db.userobjs;
 
-coll.find({itemName:Milk})
+// coll.find({itemName:Milk})
