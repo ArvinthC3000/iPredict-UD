@@ -21,16 +21,11 @@ app.use(express.urlencoded({ extended:false }))
 app.use(bodyparser.json())
 app.use(cors())
 
-// app.use('/', console.log("welcome"))
+// Routes
 app.use('/api/user',require('./routes/api/user'))
-// app.use('/api/datacenter',require('./routes/api/datacenter'))
+app.use('/api/predict',require('./routes/api/predict'))
+app.use('/api/update',require('./routes/api/update'))
+
 
 
 app.listen(PORT, console.log('Server is listening at port '+PORT))
-
-// const value = db.collection.count()
-// console.log(value)
-
-// let coll = db.userobjs;
-
-// coll.find({itemName:Milk})
