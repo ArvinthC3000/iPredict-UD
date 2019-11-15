@@ -10,11 +10,11 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     qty: {
-        type: String,
+        type: Number,
         required: true
     },
     rate: {
-        type: String,
+        type: Number,
         required: true
     },
     itemID: {
