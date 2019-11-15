@@ -85,9 +85,10 @@ table, td {
 
 #predictorColumn{
   display: flex;
+  flex-direction: row-reverse;
   height: 60vh;
   /* justify-content: space-around; */
-  width: 80%;
+  width: 100%;
   margin-top: 25px;
   background-color: #fff;
   padding: 10px;
@@ -95,6 +96,7 @@ table, td {
 }
 
 #immediateRequirement{
+  float: right;
   border: 1px solid #01CBDC;
   border-radius: 5px;
   float: left;
@@ -105,13 +107,27 @@ table, td {
 }
 
 #mightNeed{
-  float: right;
+  float: left;
+  border: 1px solid #01CBDC;
+  border-radius: 5px;
+  margin-right: 15px;
+  padding: 20px;  
+  width: 60%;
 }
 
 #immediateRequirementList{
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
-  overflow: scroll;
+  overflow: hidden;
+  overflow-y: scroll;
   height: 95%;
+}
+
+#immediateRequirementList::-webkit-scrollbar { 
+  display: none; 
+} 
+
+#updatePage{
+  display: flex;
+  justify-content: center;
 }
