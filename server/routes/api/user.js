@@ -7,6 +7,9 @@ const User = require('../../models/user')
 
 // Insert handler
 
+// @route   POST api/user/add
+// @desc    Adding item 
+// @access  Public
 router.post('/add',(req,res)=>{
     const {itemName, category, qty, rate, itemID} = req.body
     User.findOne({itemID: itemID})
