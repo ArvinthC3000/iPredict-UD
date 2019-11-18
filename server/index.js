@@ -1,24 +1,31 @@
-// const express = require('express')
-// const mongoose = require('mongoose')
+const express = require('express')
+const mongoose = require('mongoose')
+const bodyparser = require('body-parser')
+const app =  express();
+const cors = require('cors')
+const PORT = 5099;
 
-// const app =  express();
-// const PORT = 3001
+// DB config
 
-// // DB config
+const db = require('./config/key').url
 
-// const db = require('./config/key').url
+// Connect to mongoDB
 
-// // Connect to mongoDB
+mongoose.connect(db, { useNewUrlParser:true, useUnifiedTopology: true })
+.then(()=> console.log('MongoDB connected...'))
+.catch(err=>console.log(err))
 
-// mongoose.connect(db, { useNewUrlParser:true, useUnifiedTopology: true })
-// .then(()=> console.log('MongoDB connected...'))
-// .catch(err=>console.log(err))
+// Bodyparser 
 
-// // Bodyparser 
+app.use(express.urlencoded({ extended:false }))
+app.use(bodyparser.json())
+app.use(cors())
 
-// app.use(express.urlencoded({ extended:true }))
+// Routes
+app.use('/api/user',require('./routes/api/user'))
+app.use('/api/predict',require('./routes/api/predict'))
+app.use('/api/update',require('./routes/api/update'))
 
-// app.listen(PORT, console.log('Server is listening at port '+PORT))
 
-// // Routes
 
+app.listen(PORT, console.log('Server is listening at port '+PORT))
