@@ -1,6 +1,5 @@
 
 $(document).ready(()=>{
-    console.log('here again')
     $('#filterButton').click(() =>{
         const filter ={}
         let itemIDSmall = $('#itemId').val()
@@ -9,12 +8,16 @@ $(document).ready(()=>{
         // filter.itemName = $('#itemName').val();
         // filter.category = $('#category').val();
 
-        console.log(filter)
+        // console.log(filter)
         $.ajax({
             type: "POST",
             data: JSON.stringify(filter),
             contentType:"application/JSON",
-            url:"http://localhost:5099/api/update"
+            data: '',
+            url:"http://localhost:5099/api/update",
+            success: data => {
+                console.log(data)
+            }
         })
     });
 })
