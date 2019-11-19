@@ -1,5 +1,5 @@
-# iPredict-UD    
-####Developers: Arvinth C, Ajith C    
+# IPREDICT (inventory module)    
+#### Developers: Arvinth C, Ajith C    
 
 
 Find the Moving Average and equipe it in ARIMA model of Time-series Algorithm.
