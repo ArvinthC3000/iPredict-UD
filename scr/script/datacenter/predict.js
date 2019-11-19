@@ -8,7 +8,7 @@ $(document).ready( () => {
     $.ajax({
         type:"GET",
         contentType:"application/JSON",
-        url: "http://localhost:5099/api/predict", 
+        url: "https://ipredict-inventory-module.herokuapp.com/api/predict", 
         success: (data) =>{
             console.log(data)
             for(i=0;i<Object.keys(data).length;i++){
