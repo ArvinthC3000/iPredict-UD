@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const bodyparser = require('body-parser')
 const app =  express();
 const cors = require('cors')
-const PORT = 5099;
+const PORT = process.env.PORT || 5099;
 
 // DB config
 
