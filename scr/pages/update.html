@@ -41,28 +41,6 @@
                   Bangalore, Karnataka - 560 047 <br />
                   9654171823
                 </div>
-                <!-- Customer Details -->
-                <div class="customerDetailsSection">
-                  <div class="detailsTitle"><h3>CUSTOMER</h3></div>
-                  <br />
-                  <button
-                    id="+CustomerButton"
-                    type="button"
-                    class="btn btn-outline-info btn-lg customDoneButton addCustomerButton"
-                    data-toggle="modal"
-                    data-target="#exampleModal"
-                    data-whatever="@fat"
-                  >
-                    <i class="fas fa-plus customAddIcon"></i> Customer
-                  </button>
-                  <div class="customerInvoiceDetails"></div>
-                </div>
-                <!-- Summary Details -->
-                <div class="summaryDetailsSection">
-                  <div class="detailsTitle"><h3>SUMMARY</h3></div>
-                  <div class="summaryAmount"><h3></h3></div>
-                  <div class="addItemsOrCheckoutButtons"></div>
-                </div>
               </div>
             </div>
           </div>
@@ -82,156 +60,15 @@
           </nav>
         </div>
     
-        <!-- Billing section -->
+        <!-- Filtering section -->
         <div id="updateModule">
             <div id="filterBar"> <span>
                 <div id="filterInput">
-                    <input type="text" id="itemId" name="firstname" placeholder="Provide ID" value="">
-                    <!-- <input type="text" id="itemName" name="firstname" placeholder="By name" value="">
-                    <input type="text" id="category" name="firstname" placeholder="Category" value=""> -->
+                    <input type="text" id="itemId" name="itemId" placeholder="Provide ID" value="">
                 </div></span>
                 <button id="filterButton">Filter</button>
             </div>
         </div>
-    
-        <!--Customer Modal -->
-        <div
-          class="modal fade customerModal"
-          id="exampleModal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form class="addCustomerForm">
-                  <div class="form-group">
-                    <label for="customer-name" class="col-form-label">Name:</label>
-                    <input
-                      name="customerName"
-                      type="text"
-                      class="form-control customerName clearInput"
-                      id="recipient-name"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="customer-contactNo" class="col-form-label"
-                      >Contact No:</label
-                    >
-                    <input
-                      name="customerContactNo"
-                      type="number"
-                      class="form-control customerContactNo clearInput"
-                      id="recipient-contact"
-                    />
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-outline-info btn-lg customCloseButton closeModal"
-                      data-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <input
-                      id="customerFormSubmitButton"
-                      type="submit"
-                      class="btn btn-outline-info btn-lg whiteBgButton"
-                      value="Add Customer"
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-    
-        <!--Item Modal -->
-        <div
-          class="modal fade itemModal"
-          id="exampleModal1"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form class="addItemForm">
-                  <div class="form-group">
-                    <label for="customer-name" class="col-form-label">Item:</label>
-                    <input
-                      name="itemName"
-                      type="text"
-                      class="form-control customerName clearInput"
-                      id="item-name"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="customer-name" class="col-form-label"
-                      >Category:</label
-                    >
-                    <input
-                      name="itemCategory"
-                      type="text"
-                      class="form-control customerName clearInput"
-                      id="item-category"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="customer-contactNo" class="col-form-label"
-                      >Quantity:</label
-                    >
-                    <input
-                      name="itemQuantity"
-                      type="number"
-                      class="form-control customerContactNo clearInput"
-                      id="item-quantity"
-                    />
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btn-outline-info btn-lg customCloseButton closeModal"
-                      data-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <input
-                      type="submit"
-                      class="btn btn-outline-info btn-lg whiteBgButton"
-                      value="Add Item"
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
         </div>
       </body>
     
