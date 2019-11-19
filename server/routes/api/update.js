@@ -5,37 +5,38 @@ const bcrypt =  require('bcryptjs')
 // User model
 const User = require('../../models/user')
 
-// @route   GET api/update
+// @route   POST api/update
 // @desc    Update item route
 // @access  Public
 router.post('/',(req,res) => {
     const {itemID} = req.body
-    console.log(itemID)
-    User.find({itemID:itemID})
+    User.find({itemID}).select({'itemName':1, "_id":0, "previousData":1, "qty":1 , "itemID":1, "category":1 })
     .then(item =>{
         if(!item){
             console.log("Item id doesn't exists")
             res.json("Item ID doesn't doesn't exists")
-        } else {
-            console.log(item)
-            res.json(item)
         }
+        console.log(item)
+        res.json(item)
 
     })
-    
 })
 
-// router.post('/',(req,res) => {
-//     const {itemID} = req.body
-//     console.log(itemID)
-//     User.updateOne({itemID},{
-//         $set: {qty:10}
-//     }, (err,results)=>{
-//         console.log(itemID)
-//     })
-//     .then(User.findOne({itemID}).then(item => res.json(item)))
-    
-// })
+// @route   POST api/update/qty
+// @desc    Update item route
+// @access  Public
+router.post('/qty',(req,res) => {
+    const {itemID} = req.body
+    User.find({itemID}).select({'itemName':1, "_id":0, "previousData":1, "qty":1 , "itemID":1, "category":1 })
+    .then(item =>{
+        if(!item){
+            console.log("Item id doesn't exists")
+            res.json("Item ID doesn't doesn't exists")
+        }
+        console.log(item)
+        res.json(item)
 
+    })
+})
 
 module.exports = router; 
