@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5099;
 
 // DB config
 
-const db = require('./config/key').url
+const db = require('./config/key').url;
 
 // Connect to mongoDB
 
@@ -20,6 +20,10 @@ mongoose.connect(db, { useNewUrlParser:true, useUnifiedTopology: true })
 app.use(express.urlencoded({ extended:false }))
 app.use(bodyparser.json())
 app.use(cors())
+
+app.get("/",(req,res)=>{
+    res.send("server is up and running")
+})
 
 // Routes
 app.use('/api/user',require('./routes/api/user'))
