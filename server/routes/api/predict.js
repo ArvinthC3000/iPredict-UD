@@ -5,7 +5,7 @@ const bcrypt =  require('bcryptjs')
 // User model
 const User = require('../../models/user')
 
-// @route   POST api/predict
+// @route   GET api/predict
 // @desc    Update item route
 // @access  Public
 router.get('/',(req,res)=>{
@@ -27,6 +27,7 @@ router.get('/',(req,res)=>{
 
         
     })
+    .catch(err => console.log("error accessing the database "+err))
 })
 
 
