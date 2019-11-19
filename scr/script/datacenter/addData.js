@@ -21,7 +21,7 @@ $('#add').click(()=>{
             type:"POST",
             data: JSON.stringify(dataString),
             contentType:"application/JSON",
-            url: "http://localhost:5099/api/user/add", 
+            url: "https://ipredict-inventory-module.herokuapp.com/api/user/add", 
             success: (data) =>{
                 console.log(data)
             }
