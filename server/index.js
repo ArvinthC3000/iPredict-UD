@@ -26,6 +26,10 @@ app.use('/api/user',require('./routes/api/user'))
 app.use('/api/predict',require('./routes/api/predict'))
 app.use('/api/update',require('./routes/api/update'))
 
+// // Passcode config
+// const code = require('./config/code').code
+// app.use('/passcode', res.json({0000}))
+
 
 
 app.listen(PORT, console.log('Server is listening at port '+PORT))
