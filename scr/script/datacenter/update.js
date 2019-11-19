@@ -14,7 +14,7 @@ $(document).ready(()=>{
             type: "POST",
             data: JSON.stringify(filter),
             contentType:"application/JSON",
-            url:"http://localhost:5099/api/update",
+            url:"https://ipredict-inventory-module.herokuapp.com/api/update",
             success: data => {
                 console.log(data)
             }
