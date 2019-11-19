@@ -4,6 +4,7 @@ $(document).ready(()=>{
         const filter ={}
         let itemIDSmall = $('#itemId').val()
         filter.itemID = itemIDSmall.toUpperCase()
+        console.log(filter.itemID)
         // filter.itemID = "MIL500S";
         // filter.itemName = $('#itemName').val();
         // filter.category = $('#category').val();
@@ -13,7 +14,6 @@ $(document).ready(()=>{
             type: "POST",
             data: JSON.stringify(filter),
             contentType:"application/JSON",
-            data: '',
             url:"http://localhost:5099/api/update",
             success: data => {
                 console.log(data)
