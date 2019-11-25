@@ -1,7 +1,7 @@
 
 $(document).ready(()=>{
+    const filter ={}
     $('#filterButton').click(() =>{
-        const filter ={}
         let itemIDSmall = $('#itemId').val()
         filter.itemID = itemIDSmall.toUpperCase()
         console.log(filter.itemID)
@@ -23,12 +23,15 @@ $(document).ready(()=>{
 
     
     $('#addContent').click(() =>{
-        let addContent = $("#message-text").val()
+        const filter = {}
+        let itemIDSmall = $('#itemId').val()
+        filter.itemID = itemIDSmall.toUpperCase()
+        filter.addContent = $("#message-text").val()
         $.ajax({
             type: "POST",
-            data: JSON.stringify(addContent),
+            data: JSON.stringify(filter),
             contentType:"application/JSON",
-            url:"https://ipredict-inventory-module1.herokuapp.com/api/update/qty",
+            url:"https://localhost:5099/api/update/qty",
             success: data => {
                 const [datastring] = data;
                 console.log(datastring)

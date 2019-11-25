@@ -5,12 +5,17 @@ const bcrypt =  require('bcryptjs')
 // User model
 const User = require('../../models/user')
 
-// @route   POST api/update
+// @route   POST api/update/qty
 // @desc    Update item route
 // @access  Public
-router.post('/',(req,res) => {
-    const {itemID} = req.body
-    User.find({itemID}).select({'itemName':1, "_id":0, "previousData":1, "qty":1 , "itemID":1, "category":1 })
+router.post('/qty',(req,res) => {
+    const {itemID, addContent} = req.body
+    console.log(itemID, addContent)
+    User.findOneAndUpdate({itemID},{$set:{qty:addContent}},(err,res)=>{
+        if(err) return console.log(err)
+        console.log("Successful")
+        res.json("successfull")
+    })
     .then(item =>{
         if(!item){
             console.log("Item id doesn't exists")
